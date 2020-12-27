@@ -63,7 +63,7 @@
     </span>
     <div class="sign-out">
       <p>
-        <em>Logged in as {{ user.displayName }}</em>
+        <em>Signed in as {{ user.displayName }}</em>
       </p>
       <button class="sign-out-button" @click="this.$root.signOut">
         SIGN OUT
@@ -153,7 +153,7 @@ export default {
         })
 
         this.newTodo = false
-        this.placeholder = 'Enter new todo...'
+        this.placeholder = 'What needs to be done?'
         this.countUnfinished()
       } else {
         this.placeholder = 'Todo needs to be at least three characters'
@@ -254,7 +254,6 @@ header {
   outline: none;
 }
 
-.newTodoInput,
 .edit-input {
   background-color: #c5c5c5;
   border: none;
@@ -263,8 +262,20 @@ header {
   padding: 0 0 0 10px;
 }
 
+.newTodoInput {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  padding: 0 0 0 10px;
+}
+
 .newTodoButton {
-  background-color: #0a78f9;
+  background: transparent;
+  border: 4px solid #0a78f9;
+  color: #0a78f9;
 }
 
 .edit-input {
@@ -274,7 +285,7 @@ header {
 }
 
 ::placeholder {
-  color: white;
+  color: #aeaeae;
 }
 
 .todo-list {
@@ -291,6 +302,7 @@ header {
 
 .total-todos {
   color: #7e7e7e;
+  cursor: default;
   font-size: 10px;
   margin: 0 2px 0 0;
 }
@@ -333,6 +345,7 @@ header {
 .sign-out p {
   align-self: flex-end;
   color: #7e7e7e;
+  cursor: default;
   font-size: 10px;
   margin: 0;
 }

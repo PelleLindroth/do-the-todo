@@ -3,7 +3,7 @@
     <img src="../assets/Logo.svg" alt="Do the Todo Logo" />
     <button class="google-login" @click="handleAuth">
       <img src="../assets/google_G.png" alt="Google G" class="google-g" />
-      <p>LOGIN WITH GOOGLE</p>
+      <p>SIGN IN WITH GOOGLE</p>
     </button>
   </div>
 </template>

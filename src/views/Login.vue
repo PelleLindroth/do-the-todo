@@ -1,6 +1,10 @@
 <template>
   <div class="login-container">
-    <button class="google-login" @click="handleAuth">LOGIN WITH GOOGLE</button>
+    <img src="../assets/Logo.svg" alt="Do the Todo Logo" />
+    <button class="google-login" @click="handleAuth">
+      <img src="../assets/google_G.png" alt="Google G" class="google-g" />
+      <p>LOGIN WITH GOOGLE</p>
+    </button>
   </div>
 </template>
 
@@ -31,47 +35,48 @@ export default {
 
 <style scoped>
 .login-container {
-  box-shadow: 0 4px 10px -4px #aaa;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  justify-content: space-between;
   margin: 5rem auto;
   min-height: 30rem;
   padding: 2rem;
-  width: 20rem;
+  width: 50rem;
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  min-height: 25rem;
-  justify-content: space-between;
-}
-
-input,
 button {
+  border-radius: 5px;
   box-sizing: border-box;
-  width: 100%;
+  width: 20rem;
   height: 3rem;
+  margin: auto;
   padding: 0 0 0 10px;
 }
 
-input {
-  margin-top: 1rem;
+.google-g {
+  width: 2rem;
+  margin-right: auto;
+}
+
+button p {
+  margin-right: auto;
 }
 
 button {
-  background: #aaa;
+  align-items: center;
+  background: #fff;
   border: none;
-  color: white;
+  color: green;
   cursor: pointer;
+  display: flex;
   font-size: 1.1rem;
   font-weight: 700;
+  justify-content: center;
   margin-top: auto;
   outline: none;
+  padding: 1rem;
 }
 </style>

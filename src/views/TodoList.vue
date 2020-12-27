@@ -1,16 +1,19 @@
 <template>
-  <div class="app">
-    <button v-show="!newTodo" class="newTodoButton" v-on:click="toggleInput">
-      New Todo...
-    </button>
-    <input
-      type="text"
-      class="newTodoInput"
-      v-model="newInput"
-      v-show="newTodo"
-      :placeholder="placeholder"
-      @keyup.enter="submitTodo"
-    />
+  <div class="todo-list-container">
+    <header>
+      <img src="../assets/Logo.svg" alt="Small do the Todo Logo" class="logo" />
+      <button v-show="!newTodo" class="newTodoButton" v-on:click="toggleInput">
+        New Todo...
+      </button>
+      <input
+        type="text"
+        class="newTodoInput"
+        v-model="newInput"
+        v-show="newTodo"
+        :placeholder="placeholder"
+        @keyup.enter="submitTodo"
+      />
+    </header>
     <ul class="todo-list">
       <div v-for="todo in this.todos" :key="todo.dBkey">
         <TodoItem
@@ -88,7 +91,7 @@ export default {
     return {
       newInput: '',
       newTodo: false,
-      placeholder: 'Enter new todo...',
+      placeholder: 'What needs to be done?',
       todos: [],
       unfinished: 0,
       user: this.$root.userData.user,
@@ -202,8 +205,8 @@ export default {
 </script>
 
 <style>
-.app {
-  box-shadow: 0 4px 10px -4px #aaa;
+.todo-list-container {
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -214,9 +217,18 @@ export default {
   width: 20rem;
 }
 
+header {
+  align-items: center;
+  display: flex;
+}
+
+.logo {
+  margin-right: 5px;
+  width: 3rem;
+}
+
 .newTodoInput,
 .newTodoButton,
-.sign-out-button,
 .edit-input {
   box-sizing: border-box;
   width: 100%;
@@ -232,7 +244,6 @@ export default {
 .newTodoButton,
 .sign-out-button {
   align-items: center;
-  background-color: #959595;
   border: none;
   color: white;
   cursor: pointer;
@@ -250,6 +261,10 @@ export default {
   color: white;
   outline: none;
   padding: 0 0 0 10px;
+}
+
+.newTodoButton {
+  background-color: #0a78f9;
 }
 
 .edit-input {
@@ -275,7 +290,7 @@ export default {
 }
 
 .total-todos {
-  color: #9e9e9e;
+  color: #7e7e7e;
   font-size: 10px;
   margin: 0 2px 0 0;
 }
@@ -290,23 +305,35 @@ export default {
   border: none;
   color: white;
   display: flex;
-  font-weight: 700;
   margin-top: 5px;
   outline: none;
   padding: 10px;
 }
 
 .delete-button-enabled {
-  background-color: #959595;
+  background-color: #29b933;
   cursor: pointer;
 }
 
 .sign-out {
+  align-items: flex-end;
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
+.sign-out button {
+  border: 1px solid black;
+  color: #333;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.sign-out em,
 .sign-out p {
-  color: #9e9e9e;
+  align-self: flex-end;
+  color: #7e7e7e;
   font-size: 10px;
+  margin: 0;
 }
 </style>

@@ -55,7 +55,7 @@ export default {
 <style scope>
 .todo {
   align-items: center;
-  /* background-color: #f2f2f2; */
+  background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #ddd;
   box-sizing: border-box;
   color: #555;
@@ -66,10 +66,6 @@ export default {
   min-width: 100%;
   height: 3rem;
   padding: 10px;
-}
-
-.checked-todo {
-  background-color: #e1faea;
 }
 
 .gray-circle,
@@ -89,12 +85,12 @@ export default {
 }
 
 .green-circle {
-  color: #7ce898;
+  color: #29b933;
   margin-right: 5px;
 }
 
 .checked {
-  color: #7ce898;
+  color: #29b933;
   margin-left: 5px;
 }
 

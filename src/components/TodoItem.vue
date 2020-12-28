@@ -64,8 +64,8 @@ export default {
   font-weight: 700;
   margin: 5px 0 0;
   min-width: 100%;
-  height: 3rem;
-  padding: 10px;
+  height: 3.5rem;
+  padding: 1rem;
 }
 
 .gray-circle,

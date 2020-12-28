@@ -79,4 +79,29 @@ button {
   outline: none;
   padding: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: space-between;
+    margin: 4rem auto;
+    padding: 1rem;
+    min-height: 75vh;
+    max-width: 90%;
+  }
+
+  button {
+    width: 90%;
+  }
+
+  .google-g {
+    width: 1.5rem;
+    margin-right: auto;
+  }
+}
 </style>

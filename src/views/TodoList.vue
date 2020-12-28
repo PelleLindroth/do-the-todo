@@ -355,4 +355,44 @@ header {
   font-size: 10px;
   margin: 0;
 }
+
+@media only screen and (max-width: 600px) {
+  .todo-list-container {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 1rem auto;
+    min-height: 95vh;
+    padding: 1.5rem;
+    min-width: 95%;
+  }
+
+  .newTodoInput,
+  .newTodoButton,
+  .edit-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 3.5rem;
+    margin: 5px 0 0;
+  }
+
+  .delete-todos-button {
+    align-items: center;
+    background-color: #f2f2f2;
+    border: none;
+    color: white;
+    display: flex;
+    margin-top: 5px;
+    outline: none;
+    padding: 15px;
+  }
+
+  .delete-button-enabled {
+    background-color: #29b933;
+    cursor: pointer;
+  }
+}
 </style>

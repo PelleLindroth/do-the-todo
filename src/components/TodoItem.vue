@@ -111,4 +111,27 @@ export default {
 .clear-icon:hover {
   opacity: 1;
 }
+
+@media only screen and (max-width: 600px) {
+  /* .gray-circle,
+  .green-circle {
+    font-size: 1.4rem;
+  } */
+
+  .todo {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #555;
+    cursor: default;
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 5px 0 0;
+    min-width: 100%;
+    height: 3.5rem;
+    padding: 1rem;
+  }
+}
 </style>

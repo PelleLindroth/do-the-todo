@@ -13,7 +13,6 @@ html {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin: 0;
-  // object-fit: contain;
   overflow: hidden;
   padding: 0;
 }

@@ -358,16 +358,32 @@ header {
 
 @media only screen and (max-width: 600px) {
   .todo-list-container {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 1rem auto;
-    min-height: 95vh;
-    padding: 1.5rem;
-    min-width: 95%;
+    margin: 0;
+    overflow: hidden;
+    padding: 1rem 1rem 10rem;
+    min-width: 100%;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    margin: 5px 0 1rem;
+    width: 5rem;
+  }
+
+  .todo-list {
+    min-height: 90vh;
+    overflow: scroll;
   }
 
   .newTodoInput,
@@ -393,6 +409,51 @@ header {
   .delete-button-enabled {
     background-color: #29b933;
     cursor: pointer;
+  }
+
+  .footer {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    bottom: 4rem;
+    box-sizing: border-box;
+    display: flex;
+    height: 4rem;
+    left: 0;
+    padding: 1rem;
+    position: fixed;
+    width: 100vw;
+  }
+
+  .total-todos {
+    color: #8a8a8a;
+    cursor: default;
+    font-size: 10px;
+    margin: 0 2px 0 0;
+  }
+
+  .sign-out {
+    align-items: center;
+    background-color: #0a78f9;
+    box-sizing: border-box;
+    bottom: 0;
+    margin-top: auto;
+    display: flex;
+    height: 4rem;
+    justify-content: space-between;
+    left: 0;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+  }
+
+  .sign-out em,
+  .sign-out p {
+    align-self: center;
+    color: #fff;
+    cursor: default;
+    font-size: 10px;
+    margin: 0;
   }
 }
 </style>

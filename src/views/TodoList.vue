@@ -12,6 +12,8 @@
         v-show="newTodo"
         :placeholder="placeholder"
         @keyup.enter="submitTodo"
+        minLength="3"
+        maxlength="30"
       />
     </header>
     <ul class="todo-list">
@@ -37,6 +39,8 @@
             class="edit-input"
             type="text"
             v-model="newInput"
+            minLength="3"
+            maxlength="30"
             @keyup.enter="editTodo(todo)"
           />
         </li>
@@ -161,17 +165,19 @@ export default {
       this.newInput = ''
     },
     editTodo(todo) {
-      todo.name = this.newInput
+      if (this.newInput.length > 2) {
+        todo.name = this.newInput
 
-      this.$root.fb
-        .database()
-        .ref(`${this.user.uid}/todos/` + todo.dBkey)
-        .update({
-          name: this.newInput,
-        })
+        this.$root.fb
+          .database()
+          .ref(`${this.user.uid}/todos/` + todo.dBkey)
+          .update({
+            name: this.newInput,
+          })
 
-      this.newInput = ''
-      todo.edit = false
+        this.newInput = ''
+        todo.edit = false
+      }
     },
     deleteTodo(todo) {
       this.$root.fb

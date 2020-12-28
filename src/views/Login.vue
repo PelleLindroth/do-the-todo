@@ -96,8 +96,8 @@ button {
   }
 
   button {
-    margin-top: auto;
-    margin-bottom: 2rem;
+    position: fixed;
+    bottom: 2rem;
     width: 90%;
   }
 

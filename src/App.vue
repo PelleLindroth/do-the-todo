@@ -7,14 +7,19 @@
 <style lang="scss">
 body,
 html {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('./assets/busy-desk.jpg');
-  background-color: rgba(0, 0, 255, 0.5);
+  background-color: transparent;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-size: 100% auto;
   margin: 0;
-  overflow: hidden;
+  min-width: 970px;
   padding: 0;
+}
+
+body {
+  overflow: hidden;
 }
 
 .app {
@@ -35,10 +40,10 @@ html {
     background-position-x: -20rem;
     background-repeat: no-repeat;
     background-size: auto 100%;
-
     margin: 0;
+    min-width: 0;
     object-fit: cover;
-    overflow: scroll;
+    // overflow: scroll;
     padding: 0;
   }
 

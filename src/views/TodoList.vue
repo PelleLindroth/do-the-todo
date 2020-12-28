@@ -1,7 +1,19 @@
 <template>
-  <div class="todo-list-container">
+  <div class="wrapper">
     <header>
-      <img src="../assets/Logo.svg" alt="Small do the Todo Logo" class="logo" />
+      <img
+        src="../assets/Logo_white.svg"
+        alt="Small do the Todo Logo"
+        class="logo"
+      />
+      <p>
+        <em>Signed in as {{ user.displayName }}</em>
+      </p>
+      <button class="sign-out-button" @click="this.$root.signOut">
+        SIGN OUT
+      </button>
+    </header>
+    <main>
       <button v-show="!newTodo" class="newTodoButton" v-on:click="toggleInput">
         New Todo...
       </button>
@@ -15,38 +27,38 @@
         minLength="3"
         maxlength="30"
       />
-    </header>
-    <ul class="todo-list">
-      <div v-for="todo in this.todos" :key="todo.dBkey">
-        <TodoItem
-          v-show="!todo.edit"
-          :name="todo.name"
-          :done="todo.done"
-          :edit="todo.edit"
-          :dBkey="todo.dBkey"
-          @toggleEdit="toggleEdit(todo)"
-          @toggleDone="toggleDone(todo)"
-          @deleteTodo="deleteTodo(todo)"
-        />
-        <li
-          v-show="todo.edit"
-          :name="todo.name"
-          :done="todo.done"
-          :edit="todo.edit"
-          :dBkey="todo.dBkey"
-        >
-          <input
-            class="edit-input"
-            type="text"
-            v-model="newInput"
-            minLength="3"
-            maxlength="30"
-            @keyup.enter="editTodo(todo)"
+      <ul class="todo-list">
+        <div v-for="todo in this.todos" :key="todo.dBkey">
+          <TodoItem
+            v-show="!todo.edit"
+            :name="todo.name"
+            :done="todo.done"
+            :edit="todo.edit"
+            :dBkey="todo.dBkey"
+            @toggleEdit="toggleEdit(todo)"
+            @toggleDone="toggleDone(todo)"
+            @deleteTodo="deleteTodo(todo)"
           />
-        </li>
-      </div>
-    </ul>
-    <span v-show="todos.length > 0" class="footer">
+          <li
+            v-show="todo.edit"
+            :name="todo.name"
+            :done="todo.done"
+            :edit="todo.edit"
+            :dBkey="todo.dBkey"
+          >
+            <input
+              class="edit-input"
+              type="text"
+              v-model="newInput"
+              minLength="3"
+              maxlength="30"
+              @keyup.enter="editTodo(todo)"
+            />
+          </li>
+        </div>
+      </ul>
+    </main>
+    <footer v-show="todos.length > 0" class="footer">
       <button
         class="delete-todos-button"
         :class="{
@@ -64,15 +76,7 @@
             : 'No unfinished todos'
         }}</em>
       </p>
-    </span>
-    <div class="sign-out">
-      <p>
-        <em>Signed in as {{ user.displayName }}</em>
-      </p>
-      <button class="sign-out-button" @click="this.$root.signOut">
-        SIGN OUT
-      </button>
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -210,180 +214,63 @@ export default {
 }
 </script>
 
-<style>
-.todo-list-container {
-  background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  flex-direction: column;
+<style lang="scss">
+.wrapper {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 5rem auto;
-  min-height: 30rem;
-  padding: 1rem;
-  width: 20rem;
+  height: 100vh;
+  overflow: scroll;
 }
 
 header {
   align-items: center;
-  display: flex;
-}
-
-.logo {
-  margin-right: 5px;
-  width: 3rem;
-}
-
-.newTodoInput,
-.newTodoButton,
-.edit-input {
+  background: #0a78f9;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 1rem 12rem;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 3rem;
-  margin: 5px 0 0;
-}
-
-.newTodoInput,
-.newTodoButton {
-  margin: 0;
-}
-
-.newTodoButton,
-.sign-out-button {
-  align-items: center;
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  font-size: 1.1rem;
-  font-weight: 700;
-  justify-content: center;
-  outline: none;
-}
-
-.edit-input {
-  background-color: #c5c5c5;
-  border: none;
-  color: white;
-  outline: none;
-  padding: 0 0 0 10px;
-}
-
-.newTodoInput {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  color: #333;
-  font-size: 1rem;
-  font-weight: 700;
-  outline: none;
-  padding: 0 0 0 10px;
-}
-
-.newTodoButton {
-  background: transparent;
-  border: 4px solid #0a78f9;
-  color: #0a78f9;
-}
-
-.edit-input {
-  font-weight: 700;
-  font-size: 1rem;
-  margin: 5px 0 0;
-}
-
-::placeholder {
-  color: #aeaeae;
-}
-
-.todo-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer {
-  align-items: flex-start;
-  display: flex;
-  justify-content: space-between;
-}
-
-.total-todos {
-  color: #7e7e7e;
-  cursor: default;
-  font-size: 10px;
-  margin: 0 2px 0 0;
-}
-
-.footer > p {
-  margin-top: 3px;
-}
-
-.delete-todos-button {
-  align-items: center;
-  background-color: #f2f2f2;
-  border: none;
-  color: white;
-  display: flex;
-  margin-top: 5px;
-  outline: none;
-  padding: 10px;
-}
-
-.delete-button-enabled {
-  background-color: #29b933;
-  cursor: pointer;
-}
-
-.sign-out {
-  align-items: flex-end;
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.sign-out button {
-  border: 1px solid black;
-  color: #333;
-  font-size: 0.8rem;
-  padding: 0.5rem 1rem;
-}
-
-.sign-out em,
-.sign-out p {
-  align-self: flex-end;
-  color: #7e7e7e;
-  cursor: default;
-  font-size: 10px;
-  margin: 0;
-}
-
-@media only screen and (max-width: 600px) {
-  .todo-list-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    overflow: hidden;
-    padding: 1rem 1rem 10rem;
-    min-width: 100%;
-  }
-
-  header {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
 
   .logo {
-    margin: 5px 0 1rem;
-    width: 5rem;
+    width: 4rem;
   }
 
+  p {
+    color: #fff;
+    cursor: default;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .sign-out-button {
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 8px;
+    padding: 0.5rem;
+    width: 4rem;
+  }
+}
+
+main {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 5rem auto;
+  min-height: 30rem;
+  padding: 1rem;
+  max-width: 25rem;
+
   .todo-list {
-    min-height: 90vh;
-    overflow: scroll;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    min-height: 80vh;
   }
 
   .newTodoInput,
@@ -391,9 +278,73 @@ header {
   .edit-input {
     box-sizing: border-box;
     width: 100%;
-    height: 3.5rem;
+    height: 3rem;
     margin: 5px 0 0;
   }
+
+  .newTodoInput,
+  .newTodoButton {
+    margin: 0;
+  }
+
+  .newTodoButton {
+    align-items: center;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 700;
+    justify-content: center;
+    outline: none;
+  }
+
+  .edit-input {
+    background-color: #c5c5c5;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 0 0 0 10px;
+  }
+
+  .newTodoInput {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    padding: 0 0 0 10px;
+  }
+
+  .newTodoButton {
+    background: transparent;
+    border: 4px solid #0a78f9;
+    color: #0a78f9;
+  }
+
+  .edit-input {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 5px 0 0;
+  }
+
+  ::placeholder {
+    color: #aeaeae;
+  }
+}
+
+.footer {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
 
   .delete-todos-button {
     align-items: center;
@@ -401,9 +352,9 @@ header {
     border: none;
     color: white;
     display: flex;
-    margin-top: 5px;
+    margin: 0 2rem 0 0;
     outline: none;
-    padding: 15px;
+    padding: 10px;
   }
 
   .delete-button-enabled {
@@ -411,49 +362,113 @@ header {
     cursor: pointer;
   }
 
-  .footer {
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-
-    bottom: 4rem;
-    box-sizing: border-box;
-    display: flex;
-    height: 4rem;
-    left: 0;
-    padding: 1rem;
-    position: fixed;
-    width: 100vw;
-  }
-
   .total-todos {
-    color: #8a8a8a;
+    color: #7e7e7e;
     cursor: default;
     font-size: 10px;
-    margin: 0 2px 0 0;
+    margin: 0 0 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
   }
 
-  .sign-out {
+  header {
     align-items: center;
     background-color: #0a78f9;
     box-sizing: border-box;
-    bottom: 0;
-    margin-top: auto;
     display: flex;
     height: 4rem;
     justify-content: space-between;
-    left: 0;
-    padding: 1rem;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    padding: 0 1rem;
+    z-index: 1;
+
+    .logo {
+      width: 3rem;
+    }
+
+    p {
+      color: #fff;
+      cursor: default;
+      font-size: 10px;
+      margin: 0;
+    }
+
+    .sign-out-button {
+      border: 1px solid #fff;
+      background-color: transparent;
+      color: white;
+      font-size: 10px;
+      padding: 5px;
+    }
   }
 
-  .sign-out em,
-  .sign-out p {
-    align-self: center;
-    color: #fff;
-    cursor: default;
-    font-size: 10px;
-    margin: 0;
+  main {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    .todo-list {
+      padding: 0 0 5.5vh;
+      margin: 0;
+    }
+
+    .newTodoInput,
+    .newTodoButton,
+    .edit-input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 3.5rem;
+      margin: 5px 0 0;
+    }
+  }
+
+  .footer {
+    align-items: center;
+    background-color: #fff;
+    bottom: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 5.5rem;
+    justify-content: space-between;
+    left: 0;
+    padding: 0 1rem;
+    position: fixed;
+    width: 100vw;
+
+    .delete-todos-button {
+      align-items: center;
+      background-color: #f2f2f2;
+      border: none;
+      color: white;
+      display: flex;
+      margin: 0;
+      outline: none;
+      padding: 10px 15px;
+    }
+
+    .delete-button-enabled {
+      background-color: #29b933;
+      cursor: pointer;
+    }
+
+    .total-todos {
+      color: #8a8a8a;
+      cursor: default;
+      font-size: 10px;
+      margin: 0;
+    }
   }
 }
 </style>

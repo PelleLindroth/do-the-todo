@@ -88,14 +88,16 @@ button {
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    justify-content: space-between;
-    margin: 4rem auto;
+    justify-content: flex-start;
     padding: 1rem;
-    min-height: 75vh;
-    max-width: 90%;
+    margin: 0;
+    min-height: 100vh;
+    max-width: 100%;
   }
 
   button {
+    margin-top: auto;
+    margin-bottom: 2rem;
     width: 90%;
   }
 

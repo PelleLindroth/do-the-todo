@@ -19,9 +19,10 @@
       </button>
       <input
         type="text"
+        ref="newTodoInput"
         class="newTodoInput"
         v-model="newInput"
-        v-show="newTodo"
+        v-if="newTodo"
         :placeholder="placeholder"
         @keyup.enter="submitTodo"
         minLength="3"
@@ -67,7 +68,7 @@
         :disabled="!manyDeletable"
         @click="deleteMany"
       >
-        Delete all finished
+        Remove
       </button>
       <p class="total-todos">
         <em>{{
@@ -127,6 +128,7 @@ export default {
     toggleInput() {
       if (!this.todos.find(item => item.edit === true)) {
         this.newTodo = true
+        this.$nextTick(() => this.$refs.newTodoInput.focus())
       }
     },
     toggleDone(todo) {
@@ -376,11 +378,11 @@ main {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
+    min-width: 300px;
   }
 
   header {
     align-items: center;
-    background-color: #0a78f9;
     box-sizing: border-box;
     display: flex;
     height: 4rem;
@@ -404,8 +406,8 @@ main {
     }
 
     .sign-out-button {
-      border: 1px solid #fff;
       background-color: transparent;
+      border: 1px solid #fff;
       color: white;
       font-size: 10px;
       padding: 5px;
@@ -413,14 +415,12 @@ main {
   }
 
   main {
-    background-color: rgba(255, 255, 255, 0.9);
     margin-top: 3.5rem;
     display: flex;
     flex-direction: column;
     min-width: 0;
 
     .todo-list {
-      padding: 0 0 5.5vh;
       margin: 0;
     }
 
@@ -436,11 +436,11 @@ main {
 
   .footer {
     align-items: center;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
     bottom: 0;
     box-sizing: border-box;
     display: flex;
-    height: 5.5rem;
+    height: 4rem;
     justify-content: space-between;
     left: 0;
     padding: 0 1rem;

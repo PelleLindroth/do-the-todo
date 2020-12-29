@@ -82,7 +82,7 @@ button {
 
 @media only screen and (max-width: 600px) {
   .login-container {
-    background-color: rgba(255, 255, 255, 0.7);
+    background: none;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

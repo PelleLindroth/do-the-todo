@@ -35,7 +35,7 @@ body {
 @media only screen and (max-width: 600px) {
   body,
   html {
-    background-image: url('./assets/busy-desk.jpg');
+    background-image: url('./assets/clouded-desk.png');
     background-color: transparent;
     background-position-x: -20rem;
     background-repeat: no-repeat;
@@ -43,7 +43,6 @@ body {
     margin: 0;
     min-width: 0;
     object-fit: cover;
-    // overflow: scroll;
     padding: 0;
   }
 

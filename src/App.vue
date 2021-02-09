@@ -8,8 +8,7 @@
 body,
 html {
   min-height: 100vh;
-  background-image: url('./assets/busy-desk.jpg');
-  background-color: transparent;
+  background-color: #e4e1db;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -18,24 +17,14 @@ html {
   padding: 0;
 }
 
-body {
-  overflow: hidden;
-}
-
 .app {
   height: 100vh;
   width: 100%;
 }
 
-.router-view {
-  width: 100%;
-  height: 100%;
-}
-
 @media only screen and (max-width: 600px) {
   body,
   html {
-    background-image: url('./assets/clouded-desk.png');
     background-color: transparent;
     background-position-x: -20rem;
     background-repeat: no-repeat;

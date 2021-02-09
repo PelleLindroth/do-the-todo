@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <img src="../assets/Logo.svg" alt="Do the Todo Logo" />
+    <img class="logo" src="../assets/Logo.svg" alt="Do the Todo Logo" />
     <button class="google-login" @click="handleAuth">
       <img src="../assets/google_G.png" alt="Google G" class="google-g" />
       <p>SIGN IN WITH GOOGLE</p>
@@ -35,6 +35,7 @@ export default {
 
 <style scoped>
 .login-container {
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.7);
   display: flex;
   flex-direction: column;
@@ -45,6 +46,10 @@ export default {
   min-height: 30rem;
   padding: 2rem;
   width: 50rem;
+}
+
+.logo {
+  width: 30rem;
 }
 
 button {
@@ -93,6 +98,10 @@ button {
     margin: 0;
     min-height: 100vh;
     max-width: 100%;
+  }
+
+  .logo {
+    width: 20rem;
   }
 
   button {
